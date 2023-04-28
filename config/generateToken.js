@@ -8,7 +8,7 @@ const generateToken = (payload) => {
     { _id, email },
     process.env.ACCESS_TOKEN_SECRET,
     {
-      expiresIn: "5s",
+      expiresIn: "15m",
     }
   );
   const refreshToken = jwt.sign(

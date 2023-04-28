@@ -4,8 +4,9 @@ const {
   registerUser,
   login,
   token,
-  posts,
+  checkToken,
   logout,
+  changePassword,
 } = require("./user.Controller");
 const { verifyToken } = require("../../middleware/authMiddleware");
 
@@ -17,8 +18,10 @@ router.route("/sign-in").post(login);
 // test
 router.route("/token").get(token);
 
-router.route("/posts").get(verifyToken, posts);
+router.route("/posts").get(verifyToken, checkToken);
 
-// router.route("/delete").get(verifyToken, logout);
+router.route("/sign-out").get(verifyToken, logout);
+
+router.route("/change-password").post(verifyToken, changePassword);
 
 module.exports = router;

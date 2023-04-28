@@ -8,7 +8,6 @@ const verifyToken = (req, res, next) => {
   }
   try {
     const decoded = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
-    console.log(decoded._id, "decoded._id");
     req.userId = decoded._id;
     req.mess = "token còn hiệu lực";
     next();
