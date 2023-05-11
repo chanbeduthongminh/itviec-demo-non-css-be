@@ -7,6 +7,7 @@ const {
   checkToken,
   logout,
   changePassword,
+  userInfo,
 } = require("./user.Controller");
 const { verifyToken } = require("../../middleware/authMiddleware");
 
@@ -23,5 +24,7 @@ router.route("/posts").get(verifyToken, checkToken);
 router.route("/sign-out").get(verifyToken, logout);
 
 router.route("/change-password").post(verifyToken, changePassword);
+
+router.route("/user-information").get(verifyToken, userInfo);
 
 module.exports = router;

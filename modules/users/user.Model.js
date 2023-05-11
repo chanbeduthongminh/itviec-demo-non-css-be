@@ -10,6 +10,10 @@ const User = mongoose.Schema(
     skills: [],
     role: String,
     refreshToken: String,
+    title: String,
+    description: String,
+    mobile: String,
+    name: String,
   },
   { timestamps: true }
 );

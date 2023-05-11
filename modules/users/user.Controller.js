@@ -207,6 +207,35 @@ const changePassword = async (req, res, next) => {
     return res.json({ status: 0, message: "cập nhật mật khẩu thất bại" });
   }
 };
+
+const userInfo = async (req, res, next) => {
+  try {
+    const userInformation = await User.findOne({ _id: { $eq: req.userId } });
+    if (userInformation) {
+      const result = {
+        title: userInformation.title,
+        description: userInformation.description,
+        name: userInformation.name,
+        mobile: userInformation.mobile,
+        email: userInformation.email,
+        location: userInformation.location,
+      };
+      console.log(result);
+      return res.status(200).json({
+        status: 1,
+        // message: "Kiểm tra thông tin tài khoản",
+        result: result,
+      });
+    } else {
+      res.json({
+        status: 0,
+        message: "Không tìm thấy thông tin tài khoản",
+      });
+    }
+  } catch (error) {
+    res.json({ status: 0, message: error.message });
+  }
+};
 module.exports = {
   registerUser,
   login,
@@ -214,4 +243,5 @@ module.exports = {
   checkToken,
   logout,
   changePassword,
+  userInfo,
 };
