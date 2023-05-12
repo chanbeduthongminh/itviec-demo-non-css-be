@@ -29,7 +29,7 @@ app.use((req, res, next) => {
 app.use("/api", allRoutes);
 
 app.get("/", function (req, res) {
-  res.send("Hello World");
+  res.send("Hello World123");
 });
 
 app.listen(PORT, console.log(`Server start on port: ${PORT}`));
